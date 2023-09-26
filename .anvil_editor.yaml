@@ -1,7 +1,9 @@
 unique_ids:
   forms:
     ArticleEdit: '1695721574558379555035064.84247'
+    ArticleView: '1695755395949353635966229.6578'
     Home: TLHQ2ZYFRH7DINTENEVACHD23MLTYMFO
+    Home.ItemTemplate1: '1695755918562677963512545.2677'
   modules: {}
   server_modules:
     ServerModule1: '1695725896289198868548289.00934'

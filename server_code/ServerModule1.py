@@ -18,3 +18,10 @@ def add_article(article_dict):
     **article_dict
   )
 
+@anvil.server.callable
+def get_articles():
+  # Get a list of articles from the Data Table, sorted by 'created' column, in descending order
+  return app_tables.articles.search(
+    tables.order_by("created", ascending=False)
+  )
+
