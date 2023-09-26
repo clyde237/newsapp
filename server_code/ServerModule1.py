@@ -17,3 +17,4 @@ def add_article(article_dict):
     created=datetime.now(),
     **article_dict
   )
+
