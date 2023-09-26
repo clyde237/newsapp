@@ -27,4 +27,5 @@ class Home(HomeTemplate):
     # If the alert returned 'True', the save button was clicked.
     if save_clicked:
       anvil.server.call('add_article', new_article)
+      print(new_article)
 
