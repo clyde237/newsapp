@@ -4,7 +4,7 @@ container:
 components:
 - type: ColumnPanel
   properties: {role: elevated-card, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"YVEWXC":20,"YDDUMI":10,"PPVWXW":30}',
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"YVEWXC":15,"PPVWXW":35,"IVBYFO":20}',
     spacing_below: small, background: ''}
   name: column_panel_1
   layout_properties: {grid_position: 'OYYQJV,YQBRNJ'}
@@ -27,14 +27,29 @@ components:
     layout_properties: {grid_position: 'WKLOSI,YVEWXC'}
     data_bindings:
     - {property: text, code: 'self.item[''category''][''name'']'}
-  - type: Button
-    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
-      foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: 'fa:pencil-square'}
-    name: edit_article_button
-    layout_properties: {grid_position: 'WKLOSI,YDDUMI'}
-    event_bindings: {click: edit_article_button_click}
+  - type: FlowPanel
+    properties: {role: null, vertical_align: full, spacing: medium, align: right,
+      tooltip: '', border: '', foreground: '', visible: true, spacing_above: small,
+      spacing_below: small, background: ''}
+    name: flow_panel_1
+    layout_properties: {grid_position: 'WKLOSI,IVBYFO'}
+    components:
+    - type: Button
+      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+        underline: false, icon: 'fa:pencil-square'}
+      name: edit_article_button
+      layout_properties: {grid_position: 'WKLOSI,YDDUMI'}
+      event_bindings: {click: edit_article_button_click}
+    - type: Button
+      properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+        foreground: '', visible: true, text: '', font_size: null, font: '', spacing_above: small,
+        icon_align: left, spacing_below: small, italic: false, background: '#fc0303',
+        bold: false, underline: false, icon: 'fa:trash'}
+      name: delete_article_button
+      layout_properties: {}
+      event_bindings: {click: delete_article_button_click}
   - type: Image
     properties: {}
     name: image_1

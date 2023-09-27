@@ -34,3 +34,11 @@ def update_article(article, article_dict):
   else:
     raise Exception("Article does not exist")
 
+@anvil.server.callable
+def delete_article(article):
+  # check that the article being deleted exists in the Data Table
+  if app_tables.articles.has_row(article):
+    article.delete()
+  else:
+    raise Exception("Article does not exist")
+
