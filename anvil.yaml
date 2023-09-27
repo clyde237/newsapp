@@ -41,6 +41,10 @@ db_schema:
       admin_ui: {order: 5, width: 200}
       type: link_single
       target: categories
+    - name: user
+      admin_ui: {width: 200, order: 6}
+      type: link_single
+      target: users
     title: articles
   categories:
     client: search

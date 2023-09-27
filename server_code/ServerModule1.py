@@ -14,10 +14,16 @@ from datetime import datetime
 #
 @anvil.server.callable
 def add_article(article_dict):
-  app_tables.articles.add_row(
-    created=datetime.now(),
-    **article_dict
-  )
+  # Get the logged in user
+  current_user = anvil.users.get_user()
+  # Check that someone is logged in
+  if current_user is not None:
+    app_tables.articles.add_row(
+	  created=datetime.now(),
+	  # Store the logged in user in the 'user' column
+	  user=current_user,
+	  **article_dict
+	)
 
 @anvil.server.callable
 def get_articles():
