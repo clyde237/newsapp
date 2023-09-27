@@ -40,18 +40,30 @@ def get_articles():
 
 @anvil.server.callable
 def update_article(article, article_dict):
-  # check that the article given is really a row in the ‘articles’ table
-  if app_tables.articles.has_row(article):
+  if verify_user_permission(article):
+    # Set the 'updated' property to datetime.now()
     article_dict['updated'] = datetime.now()
     article.update(**article_dict)
   else:
-    raise Exception("Article does not exist")
+    # Raise an exception if the article doesn't exist in the Data Table
+    # or the user doesn't own the article being updated
+    raise Exception("Article does not exist or does not belong to this user")
 
 @anvil.server.callable
 def delete_article(article):
-  # check that the article being deleted exists in the Data Table
-  if app_tables.articles.has_row(article):
+  if verify_user_permission(article):
+    # Delete the article
     article.delete()
   else:
-    raise Exception("Article does not exist")
+    # Raise an exception if the article doesn't exist in the Data Table
+    # or the user doesn't own the article being deleted
+    raise Exception("Article does not exist or does not belong to this user")
 
+def verify_user_permission(article):
+  current_user = anvil.users.get_user()
+  # Check that someone is logged in
+  if current_user is not None:
+    # Check if the article to be updated does exist in the Data Table
+    # Check that the article belongs to the logged in user
+    if app_tables.articles.has_row(article) and article['user'] == current_user:
+      return True
