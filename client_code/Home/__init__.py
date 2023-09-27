@@ -1,5 +1,6 @@
 from ._anvil_designer import HomeTemplate
 from anvil import *
+import anvil.users
 import anvil.server
 import anvil.tables as tables
 import anvil.tables.query as q
@@ -14,8 +15,7 @@ class Home(HomeTemplate):
     self.refresh_articles()
     # Set an event handler on the RepeatingPanel (our 'articles_panel')
     self.articles_panel.set_event_handler('x-delete-article', self.delete_article)
-
-    # Any code you write here will run before the form opens.
+    anvil.users.login_with_form()
 
   def add_article_button_click(self, **event_args):
     # Initialise an empty dictionary to store the user inputs
