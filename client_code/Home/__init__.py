@@ -10,6 +10,8 @@ class Home(HomeTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    # Any code you write here will run before the form opens.
+    self.refresh_articles()
 
     # Any code you write here will run before the form opens.
 
@@ -26,4 +28,10 @@ class Home(HomeTemplate):
     # If the alert returned 'True', the save button was clicked.
     if save_clicked:
       anvil.server.call('add_article', new_article)
+      self.refresh_articles()
+
+  def refresh_articles(self):
+    # Load existing articles from the Data Table, 
+    # and display them in the RepeatingPanel
+    self.articles_panel.items = anvil.server.call('get_articles')
 
