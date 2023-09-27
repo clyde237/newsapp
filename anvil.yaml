@@ -9,6 +9,9 @@ allow_embedding: false
 name: NewsApp
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
+metadata: {description: 'This application presents the hottest ads of the moment,
+    with each user having access to their own page containing their ads. Developed
+    by BlackCode'}
 startup_form: null
 db_schema:
   articles:
