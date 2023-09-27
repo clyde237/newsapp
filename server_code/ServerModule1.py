@@ -27,10 +27,16 @@ def add_article(article_dict):
 
 @anvil.server.callable
 def get_articles():
-  # Get a list of articles from the Data Table, sorted by 'created' column, in descending order
-  return app_tables.articles.search(
-    tables.order_by("created", ascending=False)
-  )
+  # Get the logged in user
+  current_user = anvil.users.get_user()
+  # Check that someone is logged in
+  if current_user is not None:
+    # Get a list of articles that belong to the logged-in user,
+    # sorted by 'created' column, in descending order
+    return app_tables.articles.search(
+      tables.order_by("created", ascending=False),
+      user=current_user
+    )
 
 @anvil.server.callable
 def update_article(article, article_dict):
